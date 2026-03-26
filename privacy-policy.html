@@ -4,240 +4,484 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>midler - Privacy Policy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      line-height: 1.7;
-      color: #333;
-      background: #fafafa;
-      padding: 2rem 1rem;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.8;
+      color: #374151;
+      background: #f8f9fb;
+      min-height: 100vh;
     }
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
+
+    /* Header */
+    .header {
       background: #fff;
-      border-radius: 12px;
-      padding: 2.5rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      border-bottom: 1px solid #e5e7eb;
+      padding: 1.25rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.92);
     }
-    h1 {
-      font-size: 1.75rem;
-      margin-bottom: 0.5rem;
-      color: #111;
+
+    .header-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .last-updated {
-      color: #888;
-      font-size: 0.875rem;
-      margin-bottom: 2rem;
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
     }
-    h2 {
-      font-size: 1.25rem;
-      margin-top: 2rem;
-      margin-bottom: 0.75rem;
-      color: #222;
+
+    .logo-wrap img {
+      height: 32px;
+      width: auto;
     }
-    p, li {
-      margin-bottom: 0.75rem;
-      font-size: 0.95rem;
-    }
-    ul {
-      padding-left: 1.5rem;
-    }
-    .lang-toggle {
-      text-align: right;
-      margin-bottom: 1rem;
-    }
+
     .lang-toggle button {
-      background: #f0f0f0;
-      border: 1px solid #ddd;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
       padding: 0.4rem 1rem;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
+      font-family: inherit;
+      font-weight: 500;
+      color: #6b7280;
+      transition: all 0.2s;
     }
-    .lang-toggle button:hover { background: #e0e0e0; }
-    .section-ko { display: none; }
+
+    .lang-toggle button:hover {
+      background: #e5e7eb;
+      color: #374151;
+    }
+
+    /* Main content */
+    .main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    .page-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.025em;
+    }
+
+    .last-updated {
+      color: #9ca3af;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .divider {
+      height: 1px;
+      background: #e5e7eb;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .intro {
+      font-size: 1rem;
+      color: #4b5563;
+      margin-bottom: 2.5rem;
+      line-height: 1.9;
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h2 .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: #111827;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    p {
+      margin-bottom: 0.75rem;
+      font-size: 0.925rem;
+      color: #4b5563;
+    }
+
+    ul {
+      padding-left: 0;
+      list-style: none;
+      margin-bottom: 0.75rem;
+    }
+
+    li {
+      font-size: 0.925rem;
+      color: #4b5563;
+      margin-bottom: 0.5rem;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.65em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #d1d5db;
+    }
+
+    li strong {
+      color: #1f2937;
+      font-weight: 600;
+    }
+
+    code {
+      background: #f3f4f6;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.825rem;
+      color: #e54d26;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    /* Table */
+    .table-wrap {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 1rem 0;
-      font-size: 0.9rem;
+      font-size: 0.875rem;
     }
-    th, td {
-      border: 1px solid #e0e0e0;
-      padding: 0.6rem 0.8rem;
+
+    th {
+      background: #f9fafb;
+      font-weight: 600;
+      color: #374151;
       text-align: left;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #e5e7eb;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
-    th { background: #f5f5f5; font-weight: 600; }
-    a { color: #2563eb; }
+
+    td {
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid #f3f4f6;
+      color: #4b5563;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: #fafbfc;
+    }
+
+    a {
+      color: #e54d26;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: #c73e1d;
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      color: #9ca3af;
+      font-size: 0.8rem;
+      border-top: 1px solid #e5e7eb;
+      margin-top: 1rem;
+    }
+
+    .footer a {
+      color: #6b7280;
+      font-weight: 500;
+    }
+
+    .section-ko { display: none; }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .header { padding: 1rem; }
+      .main { padding: 1.5rem 1rem 3rem; }
+      .page-title { font-size: 1.5rem; }
+      .table-wrap { border-radius: 8px; }
+      th, td { padding: 0.5rem 0.65rem; font-size: 0.8rem; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="lang-toggle">
-      <button onclick="toggleLang()">한국어 / English</button>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-inner">
+      <a class="logo-wrap" href="https://www.anyit.net" target="_blank">
+        <img src="assets/midler-ax_logo.png" alt="midler_ax logo">
+      </a>
+      <div class="lang-toggle">
+        <button onclick="toggleLang()">KO / EN</button>
+      </div>
     </div>
+  </div>
+
+  <div class="main">
 
     <!-- English -->
     <div id="en" class="section-en">
-      <h1>Privacy Policy</h1>
+      <h1 class="page-title">Privacy Policy</h1>
       <p class="last-updated">Last updated: February 2026</p>
+      <div class="divider"></div>
 
-      <p><strong>midler - AI Assistant</strong> ("midler", "the Extension") is a browser extension that provides AI-powered translation, search, writing assistance, and content analysis. This privacy policy explains how midler handles your data.</p>
+      <p class="intro"><strong>midler - AI Assistant</strong> ("midler", "the Extension") is a browser extension that provides AI-powered translation, search, writing assistance, and content analysis. This privacy policy explains how midler handles your data.</p>
 
-      <h2>1. Data Collection</h2>
-      <p>midler does <strong>not</strong> collect, transmit, or store any personal data on external servers operated by us. We have no backend analytics, no telemetry, and no tracking.</p>
+      <div class="section">
+        <h2><span class="num">1</span> Data Collection</h2>
+        <p>midler does <strong>not</strong> collect, transmit, or store any personal data on external servers operated by us. We have no backend analytics, no telemetry, and no tracking.</p>
+      </div>
 
-      <h2>2. Data Stored Locally</h2>
-      <p>The following data is stored locally on your device using Chrome's built-in storage APIs:</p>
-      <ul>
-        <li><strong>User preferences</strong> — selected AI model, theme, language, prompt rules, and other settings (via <code>chrome.storage.sync</code>)</li>
-        <li><strong>API keys</strong> — your AI provider API keys are stored locally and never transmitted to any server other than the respective AI provider you selected</li>
-        <li><strong>Conversation history</strong> — chat messages are stored locally (via <code>chrome.storage.local</code>) and can be deleted by the user at any time</li>
-        <li><strong>Cached images</strong> — generated or attached images stored in IndexedDB, accessible only to the extension</li>
-      </ul>
+      <div class="section">
+        <h2><span class="num">2</span> Data Stored Locally</h2>
+        <p>The following data is stored locally on your device using Chrome's built-in storage APIs:</p>
+        <ul>
+          <li><strong>User preferences</strong> — selected AI model, theme, language, prompt rules, and other settings (via <code>chrome.storage.sync</code>)</li>
+          <li><strong>API keys</strong> — your AI provider API keys are stored locally and never transmitted to any server other than the respective AI provider you selected</li>
+          <li><strong>Conversation history</strong> — chat messages are stored locally (via <code>chrome.storage.local</code>) and can be deleted by the user at any time</li>
+          <li><strong>Cached images</strong> — generated or attached images stored in IndexedDB, accessible only to the extension</li>
+        </ul>
+      </div>
 
-      <h2>3. Data Sent to Third Parties</h2>
-      <p>When you use midler's AI features, your input (text, images, documents) is sent to the AI provider you have configured:</p>
-      <table>
-        <tr><th>Provider</th><th>Data Sent</th><th>Privacy Policy</th></tr>
-        <tr><td>OpenAI</td><td>Chat messages, images, documents</td><td><a href="https://openai.com/privacy" target="_blank">openai.com/privacy</a></td></tr>
-        <tr><td>Anthropic</td><td>Chat messages, images, documents</td><td><a href="https://www.anthropic.com/privacy" target="_blank">anthropic.com/privacy</a></td></tr>
-        <tr><td>Google (Gemini)</td><td>Chat messages, images, documents</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
-        <tr><td>Perplexity</td><td>Search queries, chat messages</td><td><a href="https://www.perplexity.ai/privacy" target="_blank">perplexity.ai/privacy</a></td></tr>
-        <tr><td>Ollama (Local)</td><td>Chat messages, images (sent to localhost only)</td><td>N/A (runs locally)</td></tr>
-      </table>
-      <p>Data is sent <strong>only when you explicitly initiate an AI action</strong> (sending a message, translating text, etc.). No background data transmission occurs.</p>
+      <div class="section">
+        <h2><span class="num">3</span> Data Sent to Third Parties</h2>
+        <p>When you use midler's AI features, your input (text, images, documents) is sent to the AI provider you have configured:</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Provider</th><th>Data Sent</th><th>Privacy Policy</th></tr>
+            <tr><td>OpenAI</td><td>Chat messages, images, documents</td><td><a href="https://openai.com/privacy" target="_blank">openai.com/privacy</a></td></tr>
+            <tr><td>Anthropic</td><td>Chat messages, images, documents</td><td><a href="https://www.anthropic.com/privacy" target="_blank">anthropic.com/privacy</a></td></tr>
+            <tr><td>Google (Gemini)</td><td>Chat messages, images, documents</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
+            <tr><td>Perplexity</td><td>Search queries, chat messages</td><td><a href="https://www.perplexity.ai/privacy" target="_blank">perplexity.ai/privacy</a></td></tr>
+            <tr><td>Ollama (Local)</td><td>Chat messages, images (localhost only)</td><td>N/A (runs locally)</td></tr>
+          </table>
+        </div>
+        <p>Data is sent <strong>only when you explicitly initiate an AI action</strong> (sending a message, translating text, etc.). No background data transmission occurs.</p>
+      </div>
 
-      <h2>4. Enterprise Server (Optional)</h2>
-      <p>If your organization uses midler with an enterprise server, the following data may be exchanged with your organization's server:</p>
-      <ul>
-        <li>Login credentials (username/password) for authentication</li>
-        <li>Profile settings and policies pushed from the server</li>
-      </ul>
-      <p>This feature is opt-in and only activated when a user manually configures a server URL and logs in.</p>
+      <div class="section">
+        <h2><span class="num">4</span> Enterprise Server (Optional)</h2>
+        <p>If your organization uses midler with an enterprise server, the following data may be exchanged with your organization's server:</p>
+        <ul>
+          <li>Login credentials (username/password) for authentication</li>
+          <li>Profile settings and policies pushed from the server</li>
+        </ul>
+        <p>This feature is opt-in and only activated when a user manually configures a server URL and logs in.</p>
+      </div>
 
-      <h2>5. Web Page Access</h2>
-      <p>midler accesses web page content only when you explicitly request:</p>
-      <ul>
-        <li><strong>Page translation</strong> — reads the current page's text content to translate it</li>
-        <li><strong>Page summarization</strong> — reads the current page's text content to generate a summary</li>
-        <li><strong>Writing assistant</strong> — injects a floating UI overlay on the current page</li>
-      </ul>
-      <p>Page content is processed locally or sent to your configured AI provider. It is never sent to our servers.</p>
+      <div class="section">
+        <h2><span class="num">5</span> Web Page Access</h2>
+        <p>midler accesses web page content only when you explicitly request:</p>
+        <ul>
+          <li><strong>Page translation</strong> — reads the current page's text content to translate it</li>
+          <li><strong>Page summarization</strong> — reads the current page's text content to generate a summary</li>
+          <li><strong>Writing assistant</strong> — injects a floating UI overlay on the current page</li>
+        </ul>
+        <p>Page content is processed locally or sent to your configured AI provider. It is never sent to our servers.</p>
+      </div>
 
-      <h2>6. Permissions</h2>
-      <ul>
-        <li><strong>sidePanel</strong> — displays the main chat interface</li>
-        <li><strong>storage</strong> — saves settings and conversation history locally</li>
-        <li><strong>activeTab</strong> — reads page content for translation/summarization upon user request</li>
-        <li><strong>scripting</strong> — injects the writing assistant and page translation features</li>
-        <li><strong>contextMenus</strong> — adds right-click menu options for quick AI access</li>
-        <li><strong>host_permissions (all URLs)</strong> — enables page translation on any site and API calls to AI providers</li>
-      </ul>
+      <div class="section">
+        <h2><span class="num">6</span> Permissions</h2>
+        <ul>
+          <li><strong>sidePanel</strong> — displays the main chat interface</li>
+          <li><strong>storage</strong> — saves settings and conversation history locally</li>
+          <li><strong>activeTab</strong> — reads page content for translation/summarization upon user request</li>
+          <li><strong>scripting</strong> — injects the writing assistant and page translation features</li>
+          <li><strong>contextMenus</strong> — adds right-click menu options for quick AI access</li>
+          <li><strong>host_permissions (all URLs)</strong> — enables page translation on any site and API calls to AI providers</li>
+        </ul>
+      </div>
 
-      <h2>7. Data Retention & Deletion</h2>
-      <p>All data is stored locally. You can delete your data at any time by:</p>
-      <ul>
-        <li>Clearing conversation history from the extension's chat interface</li>
-        <li>Resetting settings from the extension's settings page</li>
-        <li>Uninstalling the extension (removes all local data)</li>
-      </ul>
+      <div class="section">
+        <h2><span class="num">7</span> Data Retention & Deletion</h2>
+        <p>All data is stored locally. You can delete your data at any time by:</p>
+        <ul>
+          <li>Clearing conversation history from the extension's chat interface</li>
+          <li>Resetting settings from the extension's settings page</li>
+          <li>Uninstalling the extension (removes all local data)</li>
+        </ul>
+      </div>
 
-      <h2>8. Children's Privacy</h2>
-      <p>midler is not directed at children under 13 and does not knowingly collect data from children.</p>
+      <div class="section">
+        <h2><span class="num">8</span> Children's Privacy</h2>
+        <p>midler is not directed at children under 13 and does not knowingly collect data from children.</p>
+      </div>
 
-      <h2>9. Changes to This Policy</h2>
-      <p>We may update this privacy policy from time to time. Changes will be reflected in the "Last updated" date above.</p>
+      <div class="section">
+        <h2><span class="num">9</span> Changes to This Policy</h2>
+        <p>We may update this privacy policy from time to time. Changes will be reflected in the "Last updated" date above.</p>
+      </div>
 
-      <h2>10. Contact</h2>
-      <p>If you have questions about this privacy policy, please contact us through one of the following channels:</p>
-      <ul>
-        <li><a href="https://www.anyit.net/#contact" target="_blank">Contact form on our website</a></li>
-        <li><a href="https://github.com/2pylab/midler-privacy-policy/issues" target="_blank">GitHub Issues</a></li>
-      </ul>
+      <div class="section">
+        <h2><span class="num">10</span> Contact</h2>
+        <p>If you have questions about this privacy policy, please contact us through one of the following channels:</p>
+        <ul>
+          <li><a href="https://www.anyit.net/#contact" target="_blank">Contact form on our website</a></li>
+          <li><a href="https://github.com/2pylab/midler-privacy-policy/issues" target="_blank">GitHub Issues</a></li>
+        </ul>
+      </div>
     </div>
 
     <!-- Korean -->
     <div id="ko" class="section-ko">
-      <h1>개인정보 처리방침</h1>
+      <h1 class="page-title">개인정보 처리방침</h1>
       <p class="last-updated">최종 업데이트: 2026년 2월</p>
+      <div class="divider"></div>
 
-      <p><strong>midler - AI 어시스턴트</strong>("midler", "본 확장 프로그램")는 AI 기반 번역, 검색, 작문 지원, 콘텐츠 분석 기능을 제공하는 브라우저 확장 프로그램입니다. 본 개인정보 처리방침은 midler가 사용자의 데이터를 어떻게 처리하는지 설명합니다.</p>
+      <p class="intro"><strong>midler - AI 어시스턴트</strong>("midler", "본 확장 프로그램")는 AI 기반 번역, 검색, 작문 지원, 콘텐츠 분석 기능을 제공하는 브라우저 확장 프로그램입니다. 본 개인정보 처리방침은 midler가 사용자의 데이터를 어떻게 처리하는지 설명합니다.</p>
 
-      <h2>1. 데이터 수집</h2>
-      <p>midler는 당사가 운영하는 외부 서버에 어떠한 개인정보도 수집, 전송, 저장하지 <strong>않습니다</strong>. 분석 도구, 원격 측정, 추적 기능이 없습니다.</p>
+      <div class="section">
+        <h2><span class="num">1</span> 데이터 수집</h2>
+        <p>midler는 당사가 운영하는 외부 서버에 어떠한 개인정보도 수집, 전송, 저장하지 <strong>않습니다</strong>. 분석 도구, 원격 측정, 추적 기능이 없습니다.</p>
+      </div>
 
-      <h2>2. 로컬에 저장되는 데이터</h2>
-      <p>다음 데이터는 Chrome의 내장 저장소 API를 사용하여 사용자의 기기에 로컬로 저장됩니다:</p>
-      <ul>
-        <li><strong>사용자 설정</strong> — 선택한 AI 모델, 테마, 언어, 프롬프트 규칙 등 (<code>chrome.storage.sync</code>)</li>
-        <li><strong>API 키</strong> — AI 프로바이더 API 키는 로컬에 저장되며, 사용자가 선택한 AI 프로바이더 외의 서버로 전송되지 않습니다</li>
-        <li><strong>대화 기록</strong> — 채팅 메시지는 로컬에 저장되며 (<code>chrome.storage.local</code>), 사용자가 언제든 삭제할 수 있습니다</li>
-        <li><strong>캐시된 이미지</strong> — 생성되거나 첨부된 이미지는 IndexedDB에 저장되며, 확장 프로그램만 접근 가능합니다</li>
-      </ul>
+      <div class="section">
+        <h2><span class="num">2</span> 로컬에 저장되는 데이터</h2>
+        <p>다음 데이터는 Chrome의 내장 저장소 API를 사용하여 사용자의 기기에 로컬로 저장됩니다:</p>
+        <ul>
+          <li><strong>사용자 설정</strong> — 선택한 AI 모델, 테마, 언어, 프롬프트 규칙 등 (<code>chrome.storage.sync</code>)</li>
+          <li><strong>API 키</strong> — AI 프로바이더 API 키는 로컬에 저장되며, 사용자가 선택한 AI 프로바이더 외의 서버로 전송되지 않습니다</li>
+          <li><strong>대화 기록</strong> — 채팅 메시지는 로컬에 저장되며 (<code>chrome.storage.local</code>), 사용자가 언제든 삭제할 수 있습니다</li>
+          <li><strong>캐시된 이미지</strong> — 생성되거나 첨부된 이미지는 IndexedDB에 저장되며, 확장 프로그램만 접근 가능합니다</li>
+        </ul>
+      </div>
 
-      <h2>3. 제3자에게 전송되는 데이터</h2>
-      <p>midler의 AI 기능을 사용할 때, 사용자의 입력(텍스트, 이미지, 문서)은 설정한 AI 프로바이더에 전송됩니다:</p>
-      <table>
-        <tr><th>프로바이더</th><th>전송 데이터</th><th>개인정보 처리방침</th></tr>
-        <tr><td>OpenAI</td><td>채팅 메시지, 이미지, 문서</td><td><a href="https://openai.com/privacy" target="_blank">openai.com/privacy</a></td></tr>
-        <tr><td>Anthropic</td><td>채팅 메시지, 이미지, 문서</td><td><a href="https://www.anthropic.com/privacy" target="_blank">anthropic.com/privacy</a></td></tr>
-        <tr><td>Google (Gemini)</td><td>채팅 메시지, 이미지, 문서</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
-        <tr><td>Perplexity</td><td>검색 쿼리, 채팅 메시지</td><td><a href="https://www.perplexity.ai/privacy" target="_blank">perplexity.ai/privacy</a></td></tr>
-        <tr><td>Ollama (로컬)</td><td>채팅 메시지, 이미지 (localhost로만 전송)</td><td>해당 없음 (로컬 실행)</td></tr>
-      </table>
-      <p>데이터는 <strong>사용자가 명시적으로 AI 작업을 시작할 때만</strong> 전송됩니다(메시지 전송, 텍스트 번역 등). 백그라운드 데이터 전송은 발생하지 않습니다.</p>
+      <div class="section">
+        <h2><span class="num">3</span> 제3자에게 전송되는 데이터</h2>
+        <p>midler의 AI 기능을 사용할 때, 사용자의 입력(텍스트, 이미지, 문서)은 설정한 AI 프로바이더에 전송됩니다:</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>프로바이더</th><th>전송 데이터</th><th>개인정보 처리방침</th></tr>
+            <tr><td>OpenAI</td><td>채팅 메시지, 이미지, 문서</td><td><a href="https://openai.com/privacy" target="_blank">openai.com/privacy</a></td></tr>
+            <tr><td>Anthropic</td><td>채팅 메시지, 이미지, 문서</td><td><a href="https://www.anthropic.com/privacy" target="_blank">anthropic.com/privacy</a></td></tr>
+            <tr><td>Google (Gemini)</td><td>채팅 메시지, 이미지, 문서</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
+            <tr><td>Perplexity</td><td>검색 쿼리, 채팅 메시지</td><td><a href="https://www.perplexity.ai/privacy" target="_blank">perplexity.ai/privacy</a></td></tr>
+            <tr><td>Ollama (로컬)</td><td>채팅 메시지, 이미지 (localhost로만 전송)</td><td>해당 없음 (로컬 실행)</td></tr>
+          </table>
+        </div>
+        <p>데이터는 <strong>사용자가 명시적으로 AI 작업을 시작할 때만</strong> 전송됩니다(메시지 전송, 텍스트 번역 등). 백그라운드 데이터 전송은 발생하지 않습니다.</p>
+      </div>
 
-      <h2>4. 엔터프라이즈 서버 (선택사항)</h2>
-      <p>조직에서 엔터프라이즈 서버와 함께 midler를 사용하는 경우, 다음 데이터가 조직의 서버와 교환될 수 있습니다:</p>
-      <ul>
-        <li>인증을 위한 로그인 자격 증명(사용자명/비밀번호)</li>
-        <li>서버에서 배포되는 프로파일 설정 및 정책</li>
-      </ul>
-      <p>이 기능은 사용자가 직접 서버 URL을 설정하고 로그인할 때만 활성화되는 선택적 기능입니다.</p>
+      <div class="section">
+        <h2><span class="num">4</span> 엔터프라이즈 서버 (선택사항)</h2>
+        <p>조직에서 엔터프라이즈 서버와 함께 midler를 사용하는 경우, 다음 데이터가 조직의 서버와 교환될 수 있습니다:</p>
+        <ul>
+          <li>인증을 위한 로그인 자격 증명(사용자명/비밀번호)</li>
+          <li>서버에서 배포되는 프로파일 설정 및 정책</li>
+        </ul>
+        <p>이 기능은 사용자가 직접 서버 URL을 설정하고 로그인할 때만 활성화되는 선택적 기능입니다.</p>
+      </div>
 
-      <h2>5. 웹 페이지 접근</h2>
-      <p>midler는 사용자가 명시적으로 요청한 경우에만 웹 페이지 콘텐츠에 접근합니다:</p>
-      <ul>
-        <li><strong>페이지 번역</strong> — 번역을 위해 현재 페이지의 텍스트 콘텐츠를 읽습니다</li>
-        <li><strong>페이지 요약</strong> — 요약 생성을 위해 현재 페이지의 텍스트 콘텐츠를 읽습니다</li>
-        <li><strong>작문 도우미</strong> — 현재 페이지에 플로팅 UI 오버레이를 삽입합니다</li>
-      </ul>
-      <p>페이지 콘텐츠는 로컬에서 처리되거나 설정된 AI 프로바이더로 전송됩니다. 당사 서버로는 전송되지 않습니다.</p>
+      <div class="section">
+        <h2><span class="num">5</span> 웹 페이지 접근</h2>
+        <p>midler는 사용자가 명시적으로 요청한 경우에만 웹 페이지 콘텐츠에 접근합니다:</p>
+        <ul>
+          <li><strong>페이지 번역</strong> — 번역을 위해 현재 페이지의 텍스트 콘텐츠를 읽습니다</li>
+          <li><strong>페이지 요약</strong> — 요약 생성을 위해 현재 페이지의 텍스트 콘텐츠를 읽습니다</li>
+          <li><strong>작문 도우미</strong> — 현재 페이지에 플로팅 UI 오버레이를 삽입합니다</li>
+        </ul>
+        <p>페이지 콘텐츠는 로컬에서 처리되거나 설정된 AI 프로바이더로 전송됩니다. 당사 서버로는 전송되지 않습니다.</p>
+      </div>
 
-      <h2>6. 권한</h2>
-      <ul>
-        <li><strong>sidePanel</strong> — 메인 채팅 인터페이스를 표시합니다</li>
-        <li><strong>storage</strong> — 설정 및 대화 기록을 로컬에 저장합니다</li>
-        <li><strong>activeTab</strong> — 사용자 요청 시 번역/요약을 위해 페이지 콘텐츠를 읽습니다</li>
-        <li><strong>scripting</strong> — 작문 도우미 및 페이지 번역 기능을 삽입합니다</li>
-        <li><strong>contextMenus</strong> — AI 기능에 빠르게 접근하기 위한 우클릭 메뉴를 추가합니다</li>
-        <li><strong>host_permissions (모든 URL)</strong> — 모든 사이트에서 페이지 번역을 가능하게 하고 AI 프로바이더에 API를 호출합니다</li>
-      </ul>
+      <div class="section">
+        <h2><span class="num">6</span> 권한</h2>
+        <ul>
+          <li><strong>sidePanel</strong> — 메인 채팅 인터페이스를 표시합니다</li>
+          <li><strong>storage</strong> — 설정 및 대화 기록을 로컬에 저장합니다</li>
+          <li><strong>activeTab</strong> — 사용자 요청 시 번역/요약을 위해 페이지 콘텐츠를 읽습니다</li>
+          <li><strong>scripting</strong> — 작문 도우미 및 페이지 번역 기능을 삽입합니다</li>
+          <li><strong>contextMenus</strong> — AI 기능에 빠르게 접근하기 위한 우클릭 메뉴를 추가합니다</li>
+          <li><strong>host_permissions (모든 URL)</strong> — 모든 사이트에서 페이지 번역을 가능하게 하고 AI 프로바이더에 API를 호출합니다</li>
+        </ul>
+      </div>
 
-      <h2>7. 데이터 보존 및 삭제</h2>
-      <p>모든 데이터는 로컬에 저장됩니다. 다음 방법으로 언제든 데이터를 삭제할 수 있습니다:</p>
-      <ul>
-        <li>확장 프로그램의 채팅 인터페이스에서 대화 기록 삭제</li>
-        <li>확장 프로그램의 설정 페이지에서 설정 초기화</li>
-        <li>확장 프로그램 제거 (모든 로컬 데이터 삭제)</li>
-      </ul>
+      <div class="section">
+        <h2><span class="num">7</span> 데이터 보존 및 삭제</h2>
+        <p>모든 데이터는 로컬에 저장됩니다. 다음 방법으로 언제든 데이터를 삭제할 수 있습니다:</p>
+        <ul>
+          <li>확장 프로그램의 채팅 인터페이스에서 대화 기록 삭제</li>
+          <li>확장 프로그램의 설정 페이지에서 설정 초기화</li>
+          <li>확장 프로그램 제거 (모든 로컬 데이터 삭제)</li>
+        </ul>
+      </div>
 
-      <h2>8. 아동 개인정보</h2>
-      <p>midler는 13세 미만 아동을 대상으로 하지 않으며, 아동의 데이터를 의도적으로 수집하지 않습니다.</p>
+      <div class="section">
+        <h2><span class="num">8</span> 아동 개인정보</h2>
+        <p>midler는 13세 미만 아동을 대상으로 하지 않으며, 아동의 데이터를 의도적으로 수집하지 않습니다.</p>
+      </div>
 
-      <h2>9. 본 방침의 변경</h2>
-      <p>본 개인정보 처리방침은 수시로 업데이트될 수 있습니다. 변경 사항은 상단의 "최종 업데이트" 날짜에 반영됩니다.</p>
+      <div class="section">
+        <h2><span class="num">9</span> 본 방침의 변경</h2>
+        <p>본 개인정보 처리방침은 수시로 업데이트될 수 있습니다. 변경 사항은 상단의 "최종 업데이트" 날짜에 반영됩니다.</p>
+      </div>
 
-      <h2>10. 연락처</h2>
-      <p>본 개인정보 처리방침에 대한 문의사항이 있으시면 아래 채널을 통해 문의해 주세요:</p>
-      <ul>
-        <li><a href="https://www.anyit.net/#contact" target="_blank">홈페이지 문의하기</a></li>
-        <li><a href="https://github.com/2pylab/midler-privacy-policy/issues" target="_blank">GitHub Issues</a></li>
-      </ul>
+      <div class="section">
+        <h2><span class="num">10</span> 연락처</h2>
+        <p>본 개인정보 처리방침에 대한 문의사항이 있으시면 아래 채널을 통해 문의해 주세요:</p>
+        <ul>
+          <li><a href="https://www.anyit.net/#contact" target="_blank">홈페이지 문의하기</a></li>
+          <li><a href="https://github.com/2pylab/midler-privacy-policy/issues" target="_blank">GitHub Issues</a></li>
+        </ul>
+      </div>
     </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    &copy; 2026 <a href="https://www.anyit.net" target="_blank">anyit.net</a> &middot; midler_ax
   </div>
 
   <script>
