@@ -108,6 +108,24 @@
       margin-bottom: 2.5rem;
     }
 
+    .summary-box {
+      background: #f0f7ff;
+      border-left: 4px solid #2563eb;
+      padding: 1rem 1.25rem;
+      border-radius: 6px;
+      margin: 0 0 2.5rem;
+      font-size: 0.92rem;
+      color: #374151;
+      line-height: 1.85;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1f2937;
+      margin: 1.25rem 0 0.5rem;
+    }
+
     h2 {
       font-size: 1.15rem;
       font-weight: 600;
@@ -275,206 +293,396 @@
     <!-- English -->
     <div id="en" class="section-en">
       <h1 class="page-title">Privacy Policy</h1>
-      <p class="last-updated">Last updated: February 2026</p>
+      <p class="last-updated">Last updated: May 8, 2026 · Version 1.7.13+</p>
       <div class="divider"></div>
 
-      <p class="intro"><strong>midler - AI Assistant</strong> ("midler", "the Extension") is a browser extension that provides AI-powered translation, search, writing assistance, and content analysis. This privacy policy explains how midler handles your data.</p>
+      <p class="intro"><strong>midler - AI Assistant</strong> ("midler", "the Extension", "we") is a browser extension that provides AI-powered chat, translation, search, image generation, document analysis, and writing assistance. This Privacy Policy comprehensively explains what data midler collects, processes, stores, and shares, and with which parties.</p>
 
-      <div class="section">
-        <h2><span class="num">1</span> Data Collection</h2>
-        <p>midler does <strong>not</strong> collect, transmit, or store any personal data on external servers operated by us. We have no backend analytics, no telemetry, and no tracking.</p>
+      <div class="summary-box">
+        <strong>Summary:</strong> midler stores all your settings, conversations, and attached files <strong>locally on your device</strong>. When you actively send a request to an AI feature, your input is transmitted directly to the AI provider you have configured (OpenAI, Anthropic, Google, Perplexity, etc.) over HTTPS. midler operates no central server of its own. Optionally, organizations may deploy a private "Enterprise Server" — in that case, midler transmits authentication and usage data to that organization-controlled server. We do not sell, rent, or share your data with advertisers or analytics providers.
       </div>
 
       <div class="section">
-        <h2><span class="num">2</span> Data Stored Locally</h2>
-        <p>The following data is stored locally on your device using Chrome's built-in storage APIs:</p>
+        <h2><span class="num">1</span> Categories of Data Handled by midler</h2>
+        <p>midler may handle the following categories of data, depending on which features you use:</p>
         <ul>
-          <li><strong>User preferences</strong> — selected AI model, theme, language, prompt rules, and other settings (via <code>chrome.storage.sync</code>)</li>
-          <li><strong>API keys</strong> — your AI provider API keys are stored locally and never transmitted to any server other than the respective AI provider you selected</li>
-          <li><strong>Conversation history</strong> — chat messages are stored locally (via <code>chrome.storage.local</code>) and can be deleted by the user at any time</li>
-          <li><strong>Cached images</strong> — generated or attached images stored in IndexedDB, accessible only to the extension</li>
+          <li><strong>Authentication information</strong> — AI provider API keys; Enterprise Server username, password, and access tokens; email for password reset.</li>
+          <li><strong>Personal communications</strong> — chat prompts you submit to the AI, AI responses, and conversation history.</li>
+          <li><strong>User-provided content</strong> — uploaded or attached images, documents (PDF, DOCX, XLSX, PPTX, TXT, etc.), and pasted content.</li>
+          <li><strong>Website content</strong> — text extracted from the active browser tab when you explicitly invoke "Chat with page", "Summarize page", "Translate page", "Summarize near cursor", or related context-menu actions.</li>
+          <li><strong>Selected text</strong> — text you highlight on a web page, when you invoke "Search selection" / "Translate selection" via the context menu or keyboard shortcut.</li>
+          <li><strong>User preferences</strong> — UI language, theme, view mode, default LLM, prompt templates, policy rules, image generation settings, file format whitelist, etc.</li>
+          <li><strong>User memory</strong> — optional personal notes you save in "My Memory" to give the AI persistent context (e.g., "I am a software developer").</li>
+          <li><strong>Usage telemetry</strong> (only if Enterprise Server is configured) — feature type, LLM provider/model, response time, and excerpts of request/response text up to 5,000 characters per record.</li>
+          <li><strong>Internal AI ("RAG") queries</strong> (only if your organization enables it) — your search queries and selected service IDs sent to the organization-operated RAG endpoint.</li>
         </ul>
+        <p>midler does <strong>not</strong> collect: precise geolocation, financial information, health information, web browsing history (it does not record what pages you visit), or any data unrelated to features you actively invoke.</p>
       </div>
 
       <div class="section">
-        <h2><span class="num">3</span> Data Sent to Third Parties</h2>
-        <p>When you use midler's AI features, your input (text, images, documents) is sent to the AI provider you have configured:</p>
+        <h2><span class="num">2</span> Data Stored Locally on Your Device</h2>
+        <p>The following are stored on your device only and are never transmitted to us:</p>
         <div class="table-wrap">
           <table>
-            <tr><th>Provider</th><th>Data Sent</th><th>Privacy Policy</th></tr>
-            <tr><td>OpenAI</td><td>Chat messages, images, documents</td><td><a href="https://openai.com/privacy" target="_blank">openai.com/privacy</a></td></tr>
-            <tr><td>Anthropic</td><td>Chat messages, images, documents</td><td><a href="https://www.anthropic.com/privacy" target="_blank">anthropic.com/privacy</a></td></tr>
-            <tr><td>Google (Gemini)</td><td>Chat messages, images, documents</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
-            <tr><td>Perplexity</td><td>Search queries, chat messages</td><td><a href="https://www.perplexity.ai/privacy" target="_blank">perplexity.ai/privacy</a></td></tr>
-            <tr><td>Ollama (Local)</td><td>Chat messages, images (localhost only)</td><td>N/A (runs locally)</td></tr>
+            <tr><th>Storage area</th><th>Contents</th></tr>
+            <tr><td><code>chrome.storage.sync</code></td><td>UI preferences, AI provider API keys, default LLM assignments, policy rules, image generation settings, file upload whitelist, language/theme, custom LLM definitions, optional Enterprise Server URL/session token, optional User Memory text. <em>This area is encrypted in transit by Chrome and synced across browsers signed in to the same Google account, subject to Google's privacy policy.</em></td></tr>
+            <tr><td><code>chrome.storage.local</code></td><td>Conversation history, saved chats with assigned numbers, current chat ID, view-mode flags (search mode, image mode), cached server profile, image generation prompt templates.</td></tr>
+            <tr><td>IndexedDB (<code>midler_images</code>)</td><td>Attached or generated images and files (DOCX/PDF/etc.), tagged with conversation ID for cleanup.</td></tr>
           </table>
         </div>
-        <p>Data is sent <strong>only when you explicitly initiate an AI action</strong> (sending a message, translating text, etc.). No background data transmission occurs.</p>
       </div>
 
       <div class="section">
-        <h2><span class="num">4</span> Enterprise Server (Optional)</h2>
-        <p>If your organization uses midler with an enterprise server, the following data may be exchanged with your organization's server:</p>
+        <h2><span class="num">3</span> Data Sent to Third-Party AI Providers</h2>
+        <p>When you submit a chat message, request a translation, generate an image, summarize a page, etc., midler sends the relevant input <strong>directly</strong> from your browser to the AI provider you have configured. midler does not proxy these requests through any server we control. The data sent depends on the action:</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Provider</th><th>Data transmitted</th><th>When</th><th>Provider Privacy Policy</th></tr>
+            <tr>
+              <td>OpenAI (GPT, DALL-E, gpt-image)</td>
+              <td>Prompt, conversation history, attached images, file contents, model name, your OpenAI API key (Bearer header)</td>
+              <td>When you send a message, generate an image, or trigger a feature routed to OpenAI</td>
+              <td><a href="https://openai.com/privacy" target="_blank">openai.com/privacy</a></td>
+            </tr>
+            <tr>
+              <td>Anthropic (Claude)</td>
+              <td>Prompt, conversation history, attached images, file contents, model name, your Anthropic API key</td>
+              <td>When routed to Claude</td>
+              <td><a href="https://www.anthropic.com/privacy" target="_blank">anthropic.com/privacy</a></td>
+            </tr>
+            <tr>
+              <td>Google (Gemini, Nano Banana / Imagen)</td>
+              <td>Prompt, conversation history, attached images, file contents, model name, your Google AI API key</td>
+              <td>When routed to Gemini for chat or image generation</td>
+              <td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td>
+            </tr>
+            <tr>
+              <td>Perplexity</td>
+              <td>Search query / chat prompt, conversation history, model name, your Perplexity API key</td>
+              <td>When in search mode or routed to Perplexity</td>
+              <td><a href="https://www.perplexity.ai/privacy" target="_blank">perplexity.ai/privacy</a></td>
+            </tr>
+            <tr>
+              <td>Local AI (Ollama / LM Studio / etc.)</td>
+              <td>Prompt, conversation history, attached images (sent only to the URL you specify, typically <code>localhost</code>)</td>
+              <td>When routed to Local AI</td>
+              <td>N/A — runs on your machine or your specified endpoint</td>
+            </tr>
+            <tr>
+              <td>Custom LLM (user-defined)</td>
+              <td>Prompt and other request data sent only to the API URL you configure</td>
+              <td>When you select a custom LLM</td>
+              <td>Per the operator of that endpoint</td>
+            </tr>
+          </table>
+        </div>
+        <p>API keys are stored on your device and only attached to outgoing requests to the corresponding provider. Data is sent <strong>only when you explicitly initiate an action</strong>; midler performs no background data transmission.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">4</span> Data Sent to Your Organization's Enterprise Server (Optional)</h2>
+        <p>An Enterprise Server is opt-in: it is activated only if a server URL is configured (typically by an IT administrator) and the user logs in. When configured, midler transmits the following to that server, owned and operated by your organization (not by us):</p>
         <ul>
-          <li>Login credentials (username/password) for authentication</li>
-          <li>Profile settings and policies pushed from the server</li>
+          <li><strong>Authentication</strong>: server URL, username, password (during login over HTTPS), refresh tokens, password change requests, password reset email address.</li>
+          <li><strong>Profile sync</strong>: download of policies, LLM assignments, image generation defaults, allowed file formats, ACL/security settings, logging settings, branding, and other administrator-defined configuration.</li>
+          <li><strong>Usage telemetry</strong>: per AI request — feature type (chat/search/image/translation/file analysis/title generation/RAG/Gen-Design/Report-Gen), provider name, model name, response time, and a truncated excerpt of the request and response text (up to 5,000 characters each). The text excerpt is included so administrators can audit usage; this can include personal communications and uploaded content fragments. Logging can be configured by the administrator.</li>
+          <li><strong>User Memory</strong>: if you save personal notes in "My Memory", they are uploaded to the server so they can persist across devices.</li>
+          <li><strong>Policy submissions</strong>: any policy proposals you submit through the Extension's "Submit Policies" feature.</li>
         </ul>
-        <p>This feature is opt-in and only activated when a user manually configures a server URL and logs in.</p>
+        <p>The Enterprise Server is operated by your organization. midler's developers do not receive or have access to data on that server. Please consult your organization's privacy notice for retention and access controls applicable to your account.</p>
       </div>
 
       <div class="section">
-        <h2><span class="num">5</span> Web Page Access</h2>
-        <p>midler accesses web page content only when you explicitly request:</p>
+        <h2><span class="num">5</span> Internal AI ("사내 AI" / RAG) Search (Optional)</h2>
+        <p>If the administrator enables the "Internal AI Search" feature, your search queries and selected service IDs are sent to the organization-operated RAG endpoint. Responses (including citations and document references) are returned to your browser and stored locally as part of your conversation. No data is sent to midler developers.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">6</span> Web Page and Selection Access</h2>
+        <p>midler accesses the contents of web pages only when you explicitly invoke a feature that needs them:</p>
         <ul>
-          <li><strong>Page translation</strong> — reads the current page's text content to translate it</li>
-          <li><strong>Page summarization</strong> — reads the current page's text content to generate a summary</li>
-          <li><strong>Writing assistant</strong> — injects a floating UI overlay on the current page</li>
+          <li><strong>Chat with page / Summarize page / Translate page</strong> — extracts the visible text of the active tab and sends it to your configured AI provider.</li>
+          <li><strong>Summarize near cursor / Translate near cursor</strong> — extracts text near the right-click target.</li>
+          <li><strong>Search selection / Translate selection</strong> — uses the text you have highlighted.</li>
+          <li><strong>Analyze image (right-click)</strong> — sends the selected image and nearby text to your configured AI provider.</li>
+          <li><strong>Floating writing assistant</strong> — injects a small UI overlay onto the active page; text you type into it is sent to your configured AI provider.</li>
         </ul>
-        <p>Page content is processed locally or sent to your configured AI provider. It is never sent to our servers.</p>
+        <p>Page contents are not stored centrally by us. They are sent to your configured AI provider, and the resulting AI response is stored only in your local conversation history.</p>
       </div>
 
       <div class="section">
-        <h2><span class="num">6</span> Permissions</h2>
+        <h2><span class="num">7</span> Data Shared via Chrome Sync (Google)</h2>
+        <p>Settings stored in <code>chrome.storage.sync</code> are encrypted by Chrome and synced across browsers signed in to the same Google account, per <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>. We do not control this transport. If you do not wish settings to sync, you can sign out of Chrome Sync or disable extension sync in Chrome settings.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">8</span> Data We Do NOT Share</h2>
         <ul>
-          <li><strong>sidePanel</strong> — displays the main chat interface</li>
-          <li><strong>storage</strong> — saves settings and conversation history locally</li>
-          <li><strong>activeTab</strong> — reads page content for translation/summarization upon user request</li>
-          <li><strong>scripting</strong> — injects the writing assistant and page translation features</li>
-          <li><strong>contextMenus</strong> — adds right-click menu options for quick AI access</li>
-          <li><strong>host_permissions (all URLs)</strong> — enables page translation on any site and API calls to AI providers</li>
+          <li>We do not sell, rent, or trade your data to advertisers or data brokers.</li>
+          <li>We do not share data with analytics or tracking services.</li>
+          <li>We do not use your data to train any machine learning model.</li>
+          <li>midler's own developers do not receive any data from your installation; the Extension has no developer-controlled backend.</li>
         </ul>
       </div>
 
       <div class="section">
-        <h2><span class="num">7</span> Data Retention & Deletion</h2>
-        <p>All data is stored locally. You can delete your data at any time by:</p>
+        <h2><span class="num">9</span> Permissions Requested</h2>
         <ul>
-          <li>Clearing conversation history from the extension's chat interface</li>
-          <li>Resetting settings from the extension's settings page</li>
-          <li>Uninstalling the extension (removes all local data)</li>
+          <li><strong>storage</strong> — save settings and conversation history locally and via Chrome Sync.</li>
+          <li><strong>sidePanel</strong> — display the chat interface in Chrome's side panel.</li>
+          <li><strong>activeTab</strong> — read the current tab's text content for translation/summary/chat-with-page features.</li>
+          <li><strong>scripting</strong> — inject the writing assistant overlay and translation features into the page.</li>
+          <li><strong>contextMenus</strong> — provide right-click menu entries for selection-based AI actions.</li>
+          <li><strong>tabs</strong> — read the URL of the active tab to evaluate URL-based policies.</li>
+          <li><strong>host_permissions</strong> (all URLs) — required to inject the writing assistant on any page and to call AI provider APIs (which can be on user-specified domains).</li>
         </ul>
       </div>
 
       <div class="section">
-        <h2><span class="num">8</span> Children's Privacy</h2>
-        <p>midler is not directed at children under 13 and does not knowingly collect data from children.</p>
+        <h2><span class="num">10</span> Data Security</h2>
+        <ul>
+          <li>All network calls to AI providers and to the Enterprise Server use HTTPS.</li>
+          <li>API keys are stored in <code>chrome.storage.sync</code> and are not transmitted to any party other than the matching AI provider.</li>
+          <li>We follow the principle of least privilege: data is sent only to the destination of the feature you invoked.</li>
+          <li>You are responsible for the security of any API keys or credentials you enter into the Extension.</li>
+        </ul>
       </div>
 
       <div class="section">
-        <h2><span class="num">9</span> Changes to This Policy</h2>
-        <p>We may update this privacy policy from time to time. Changes will be reflected in the "Last updated" date above.</p>
+        <h2><span class="num">11</span> Data Retention and User Rights</h2>
+        <p>Locally stored data persists until you delete it or uninstall the Extension. You may at any time:</p>
+        <ul>
+          <li>Delete individual conversations or all unpinned conversations from the chat history panel.</li>
+          <li>Clear images, files, and gallery items.</li>
+          <li>Reset all settings from the Extension's Settings page.</li>
+          <li>Sign out of an Enterprise Server (your local cache of profile data is removed).</li>
+          <li>Use the built-in Backup/Restore feature to export your data to a single <code>.midler-backup</code> file or to import one.</li>
+          <li>Uninstall the Extension to remove all locally stored data including IndexedDB images.</li>
+        </ul>
+        <p>Data stored on an Enterprise Server is governed by your organization's retention policy; please contact your administrator to exercise rights regarding that data (access, correction, deletion, export).</p>
       </div>
 
       <div class="section">
-        <h2><span class="num">10</span> Contact</h2>
-        <p>If you have questions about this privacy policy, please contact us through one of the following channels:</p>
+        <h2><span class="num">12</span> Children's Privacy</h2>
+        <p>midler is not directed to children under 13 and does not knowingly collect data from children. If you believe a child has provided data through midler, please contact us so we can advise on local deletion.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">13</span> International Data Transfers</h2>
+        <p>When you use third-party AI providers, your data may be processed in countries other than where you are located, in accordance with each provider's privacy policy. Please review the linked policies in Section 3.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">14</span> Changes to This Policy</h2>
+        <p>We may update this Privacy Policy as the Extension evolves. Material changes will be reflected in the "Last updated" date and, where appropriate, surfaced in-product. Continued use of the Extension after an update constitutes acceptance of the revised policy.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">15</span> Contact</h2>
+        <p>For questions, complaints, or data-related requests, please contact us through one of the following channels:</p>
         <ul>
           <li><a href="https://www.anyit.net/#contact" target="_blank">Contact form on our website</a></li>
           <li><a href="https://github.com/2pylab/midler-privacy-policy/issues" target="_blank">GitHub Issues</a></li>
         </ul>
+        <p>Enterprise users should contact their organization's administrator for matters concerning data stored on the Enterprise Server.</p>
       </div>
     </div>
 
     <!-- Korean -->
     <div id="ko" class="section-ko">
       <h1 class="page-title">개인정보 처리방침</h1>
-      <p class="last-updated">최종 업데이트: 2026년 2월</p>
+      <p class="last-updated">최종 업데이트: 2026년 5월 8일 · 버전 1.7.13+</p>
       <div class="divider"></div>
 
-      <p class="intro"><strong>midler - AI 어시스턴트</strong>("midler", "본 확장 프로그램")는 AI 기반 번역, 검색, 작문 지원, 콘텐츠 분석 기능을 제공하는 브라우저 확장 프로그램입니다. 본 개인정보 처리방침은 midler가 사용자의 데이터를 어떻게 처리하는지 설명합니다.</p>
+      <p class="intro"><strong>midler - AI 어시스턴트</strong>("midler", "본 확장 프로그램", "당사")는 AI 기반 채팅, 번역, 검색, 이미지 생성, 문서 분석, 작문 지원 기능을 제공하는 브라우저 확장 프로그램입니다. 본 방침은 midler가 어떤 데이터를 수집·처리·저장·공유하며, 어떤 당사자에게 전송하는지 누락 없이 설명합니다.</p>
 
-      <div class="section">
-        <h2><span class="num">1</span> 데이터 수집</h2>
-        <p>midler는 당사가 운영하는 외부 서버에 어떠한 개인정보도 수집, 전송, 저장하지 <strong>않습니다</strong>. 분석 도구, 원격 측정, 추적 기능이 없습니다.</p>
+      <div class="summary-box">
+        <strong>요약:</strong> midler는 모든 설정, 대화 내용, 첨부 파일을 사용자 기기에 <strong>로컬로 저장</strong>합니다. AI 기능을 사용자가 명시적으로 호출하는 시점에만, 사용자가 설정한 AI 프로바이더(OpenAI, Anthropic, Google, Perplexity 등)에 HTTPS로 직접 전송됩니다. midler 자체 운영 서버는 없습니다. 조직(기업)이 별도로 "엔터프라이즈 서버"를 배포한 경우에는 인증 및 사용 데이터가 해당 조직이 소유·운영하는 서버로 전송될 수 있습니다. 당사는 사용자 데이터를 광고주·분석 업체에 판매·임대·공유하지 않습니다.
       </div>
 
       <div class="section">
-        <h2><span class="num">2</span> 로컬에 저장되는 데이터</h2>
-        <p>다음 데이터는 Chrome의 내장 저장소 API를 사용하여 사용자의 기기에 로컬로 저장됩니다:</p>
+        <h2><span class="num">1</span> midler가 처리하는 데이터 카테고리</h2>
+        <p>사용하는 기능에 따라 다음과 같은 데이터가 처리될 수 있습니다.</p>
         <ul>
-          <li><strong>사용자 설정</strong> — 선택한 AI 모델, 테마, 언어, 프롬프트 규칙 등 (<code>chrome.storage.sync</code>)</li>
-          <li><strong>API 키</strong> — AI 프로바이더 API 키는 로컬에 저장되며, 사용자가 선택한 AI 프로바이더 외의 서버로 전송되지 않습니다</li>
-          <li><strong>대화 기록</strong> — 채팅 메시지는 로컬에 저장되며 (<code>chrome.storage.local</code>), 사용자가 언제든 삭제할 수 있습니다</li>
-          <li><strong>캐시된 이미지</strong> — 생성되거나 첨부된 이미지는 IndexedDB에 저장되며, 확장 프로그램만 접근 가능합니다</li>
+          <li><strong>인증 정보</strong> — AI 프로바이더 API 키, 엔터프라이즈 서버 사용자명·비밀번호·액세스 토큰, 비밀번호 재설정용 이메일.</li>
+          <li><strong>개인 통신 내용</strong> — AI에 전송하는 프롬프트, AI 응답, 대화 기록.</li>
+          <li><strong>사용자 제공 콘텐츠</strong> — 업로드/첨부 이미지, 문서(PDF, DOCX, XLSX, PPTX, TXT 등), 붙여넣은 콘텐츠.</li>
+          <li><strong>웹페이지 콘텐츠</strong> — "웹페이지와 대화", "페이지 요약", "페이지 번역", "포인트 근처 요약" 등 사용자가 명시적으로 호출한 경우 활성 탭에서 추출한 텍스트.</li>
+          <li><strong>선택 텍스트</strong> — 컨텍스트 메뉴/단축키로 "선택영역 검색·번역" 시 사용자가 강조 표시한 텍스트.</li>
+          <li><strong>사용자 환경설정</strong> — UI 언어, 테마, 보기 모드, 기본 LLM, 프롬프트 템플릿, 정책 규칙, 이미지 생성 설정, 파일 포맷 화이트리스트 등.</li>
+          <li><strong>사용자 메모리</strong> — "내 메모리"에 저장하는 선택적 개인 노트 (예: "저는 소프트웨어 개발자입니다").</li>
+          <li><strong>사용 텔레메트리</strong> (엔터프라이즈 서버 설정 시에만) — 기능 유형, LLM 프로바이더/모델, 응답 시간, 그리고 요청/응답 텍스트의 발췌(레코드당 최대 5,000자).</li>
+          <li><strong>사내 AI(RAG) 질의</strong> (조직이 활성화한 경우에만) — 검색 질의 텍스트 및 선택한 서비스 ID를 조직이 운영하는 RAG 엔드포인트로 전송.</li>
         </ul>
+        <p>midler는 다음 데이터는 <strong>수집하지 않습니다</strong>: 정밀 위치, 금융 정보, 건강 정보, 일반적 웹 브라우징 기록, 또는 사용자가 직접 호출하지 않은 기능과 무관한 데이터.</p>
       </div>
 
       <div class="section">
-        <h2><span class="num">3</span> 제3자에게 전송되는 데이터</h2>
-        <p>midler의 AI 기능을 사용할 때, 사용자의 입력(텍스트, 이미지, 문서)은 설정한 AI 프로바이더에 전송됩니다:</p>
+        <h2><span class="num">2</span> 사용자 기기에 로컬로 저장되는 데이터</h2>
+        <p>다음 데이터는 사용자 기기에만 저장되며 당사에는 전송되지 않습니다.</p>
         <div class="table-wrap">
           <table>
-            <tr><th>프로바이더</th><th>전송 데이터</th><th>개인정보 처리방침</th></tr>
-            <tr><td>OpenAI</td><td>채팅 메시지, 이미지, 문서</td><td><a href="https://openai.com/privacy" target="_blank">openai.com/privacy</a></td></tr>
-            <tr><td>Anthropic</td><td>채팅 메시지, 이미지, 문서</td><td><a href="https://www.anthropic.com/privacy" target="_blank">anthropic.com/privacy</a></td></tr>
-            <tr><td>Google (Gemini)</td><td>채팅 메시지, 이미지, 문서</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
-            <tr><td>Perplexity</td><td>검색 쿼리, 채팅 메시지</td><td><a href="https://www.perplexity.ai/privacy" target="_blank">perplexity.ai/privacy</a></td></tr>
-            <tr><td>Ollama (로컬)</td><td>채팅 메시지, 이미지 (localhost로만 전송)</td><td>해당 없음 (로컬 실행)</td></tr>
+            <tr><th>저장 영역</th><th>내용</th></tr>
+            <tr><td><code>chrome.storage.sync</code></td><td>UI 환경설정, AI 프로바이더 API 키, 기본 LLM 라우팅, 정책 규칙, 이미지 생성 설정, 파일 업로드 화이트리스트, 언어·테마, 커스텀 LLM 정의, 선택적 엔터프라이즈 서버 URL/세션 토큰, 선택적 사용자 메모리 텍스트. <em>이 영역은 Chrome이 전송 시 암호화하며 동일한 Google 계정으로 로그인된 다른 Chrome 브라우저와 동기화됩니다(Google 개인정보처리방침 적용).</em></td></tr>
+            <tr><td><code>chrome.storage.local</code></td><td>대화 기록, 번호가 부여된 저장된 대화, 현재 대화 ID, 모드 플래그(검색/이미지 모드), 서버 프로필 캐시, 이미지 생성 프롬프트 템플릿.</td></tr>
+            <tr><td>IndexedDB (<code>midler_images</code>)</td><td>첨부 또는 생성된 이미지와 파일(DOCX/PDF 등). 정리 용도로 대화 ID와 연결됩니다.</td></tr>
           </table>
         </div>
-        <p>데이터는 <strong>사용자가 명시적으로 AI 작업을 시작할 때만</strong> 전송됩니다(메시지 전송, 텍스트 번역 등). 백그라운드 데이터 전송은 발생하지 않습니다.</p>
       </div>
 
       <div class="section">
-        <h2><span class="num">4</span> 엔터프라이즈 서버 (선택사항)</h2>
-        <p>조직에서 엔터프라이즈 서버와 함께 midler를 사용하는 경우, 다음 데이터가 조직의 서버와 교환될 수 있습니다:</p>
+        <h2><span class="num">3</span> 제3자 AI 프로바이더로 전송되는 데이터</h2>
+        <p>채팅 메시지 전송, 번역, 이미지 생성, 페이지 요약 등 AI 기능을 호출하면 midler는 사용자가 설정한 AI 프로바이더에 <strong>브라우저에서 직접</strong> 전송합니다. 이러한 요청은 당사 서버를 경유하지 않습니다. 전송 데이터는 동작에 따라 다릅니다.</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>프로바이더</th><th>전송 데이터</th><th>전송 시점</th><th>해당 프로바이더의 개인정보처리방침</th></tr>
+            <tr>
+              <td>OpenAI (GPT, DALL-E, gpt-image)</td>
+              <td>프롬프트, 대화 기록, 첨부 이미지, 파일 내용, 모델명, OpenAI API 키(Bearer 헤더)</td>
+              <td>OpenAI로 라우팅된 메시지/이미지 생성/기능 호출 시</td>
+              <td><a href="https://openai.com/privacy" target="_blank">openai.com/privacy</a></td>
+            </tr>
+            <tr>
+              <td>Anthropic (Claude)</td>
+              <td>프롬프트, 대화 기록, 첨부 이미지, 파일 내용, 모델명, Anthropic API 키</td>
+              <td>Claude로 라우팅 시</td>
+              <td><a href="https://www.anthropic.com/privacy" target="_blank">anthropic.com/privacy</a></td>
+            </tr>
+            <tr>
+              <td>Google (Gemini, Nano Banana / Imagen)</td>
+              <td>프롬프트, 대화 기록, 첨부 이미지, 파일 내용, 모델명, Google AI API 키</td>
+              <td>Gemini 채팅/이미지 생성 호출 시</td>
+              <td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td>
+            </tr>
+            <tr>
+              <td>Perplexity</td>
+              <td>검색 질의/채팅 프롬프트, 대화 기록, 모델명, Perplexity API 키</td>
+              <td>검색 모드 또는 Perplexity 라우팅 시</td>
+              <td><a href="https://www.perplexity.ai/privacy" target="_blank">perplexity.ai/privacy</a></td>
+            </tr>
+            <tr>
+              <td>로컬 AI (Ollama / LM Studio 등)</td>
+              <td>프롬프트, 대화 기록, 첨부 이미지(사용자가 지정한 URL — 일반적으로 <code>localhost</code> — 로만 전송)</td>
+              <td>로컬 AI로 라우팅 시</td>
+              <td>해당 없음 — 사용자 환경에서 실행</td>
+            </tr>
+            <tr>
+              <td>커스텀 LLM (사용자 정의)</td>
+              <td>사용자가 설정한 API URL로만 전송되는 프롬프트 및 요청 데이터</td>
+              <td>커스텀 LLM 선택 시</td>
+              <td>해당 엔드포인트 운영자의 정책 적용</td>
+            </tr>
+          </table>
+        </div>
+        <p>API 키는 사용자 기기에 저장되며, 해당 프로바이더로 향하는 요청에만 첨부됩니다. 데이터는 <strong>사용자가 명시적으로 동작을 시작할 때만</strong> 전송되며, 백그라운드 데이터 전송은 발생하지 않습니다.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">4</span> 조직의 엔터프라이즈 서버로 전송되는 데이터(선택)</h2>
+        <p>엔터프라이즈 서버는 선택 사항입니다. 서버 URL이 설정되고(주로 IT 관리자가) 사용자가 로그인한 경우에만 활성화됩니다. 활성화 시 다음 데이터가 조직 소유·운영의 서버(당사 소유 아님)로 전송됩니다.</p>
         <ul>
-          <li>인증을 위한 로그인 자격 증명(사용자명/비밀번호)</li>
-          <li>서버에서 배포되는 프로파일 설정 및 정책</li>
+          <li><strong>인증</strong>: 서버 URL, 사용자명, 비밀번호(HTTPS 로그인 시), 갱신 토큰, 비밀번호 변경 요청, 비밀번호 재설정 이메일.</li>
+          <li><strong>프로필 동기화</strong>: 정책, LLM 라우팅, 이미지 생성 기본값, 허용 파일 포맷, ACL/보안 설정, 로깅 설정, 브랜딩 등 관리자 설정 다운로드.</li>
+          <li><strong>사용 텔레메트리</strong>: AI 요청별 — 기능 유형(chat/search/image/translation/file_analysis/title_gen/RAG/Gen-Design/Report-Gen 등), 프로바이더명, 모델명, 응답 시간, 요청/응답 텍스트 발췌(각각 최대 5,000자). 텍스트 발췌에는 개인 통신 내용 및 업로드 콘텐츠 일부가 포함될 수 있습니다. 로깅 범위는 관리자가 구성합니다.</li>
+          <li><strong>사용자 메모리</strong>: "내 메모리"에 저장된 노트는 다중 기기 동기화를 위해 서버에 업로드됩니다.</li>
+          <li><strong>정책 제출</strong>: "정책 제출" 기능을 통해 사용자가 등록한 정책 제안.</li>
         </ul>
-        <p>이 기능은 사용자가 직접 서버 URL을 설정하고 로그인할 때만 활성화되는 선택적 기능입니다.</p>
+        <p>엔터프라이즈 서버는 사용자의 조직이 운영합니다. midler 개발자는 해당 서버의 데이터를 수신하거나 접근할 수 없습니다. 보존 기간 및 접근 통제는 조직의 개인정보처리방침을 확인해 주세요.</p>
       </div>
 
       <div class="section">
-        <h2><span class="num">5</span> 웹 페이지 접근</h2>
-        <p>midler는 사용자가 명시적으로 요청한 경우에만 웹 페이지 콘텐츠에 접근합니다:</p>
+        <h2><span class="num">5</span> 사내 AI(RAG) 검색(선택)</h2>
+        <p>관리자가 "사내 AI 검색" 기능을 활성화한 경우, 사용자의 검색 질의와 선택된 서비스 ID는 조직이 운영하는 RAG 엔드포인트로 전송됩니다. 응답(인용/문서 참조 포함)은 브라우저로 반환되어 대화의 일부로 로컬 저장됩니다. 당사로는 어떤 데이터도 전송되지 않습니다.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">6</span> 웹페이지 및 선택 텍스트 접근</h2>
+        <p>midler는 사용자가 명시적으로 호출한 경우에만 웹페이지 콘텐츠에 접근합니다.</p>
         <ul>
-          <li><strong>페이지 번역</strong> — 번역을 위해 현재 페이지의 텍스트 콘텐츠를 읽습니다</li>
-          <li><strong>페이지 요약</strong> — 요약 생성을 위해 현재 페이지의 텍스트 콘텐츠를 읽습니다</li>
-          <li><strong>작문 도우미</strong> — 현재 페이지에 플로팅 UI 오버레이를 삽입합니다</li>
+          <li><strong>웹페이지와 대화 / 페이지 요약 / 페이지 번역</strong> — 활성 탭의 텍스트를 추출해 사용자가 설정한 AI 프로바이더에 전송합니다.</li>
+          <li><strong>포인트 근처 요약 / 번역</strong> — 우클릭한 위치 인근의 텍스트를 추출합니다.</li>
+          <li><strong>선택영역 검색 / 번역</strong> — 사용자가 강조한 텍스트를 사용합니다.</li>
+          <li><strong>이미지 분석(우클릭)</strong> — 선택된 이미지와 인근 텍스트를 AI 프로바이더로 전송합니다.</li>
+          <li><strong>플로팅 작문 도우미</strong> — 활성 페이지에 작은 UI 오버레이를 삽입하며, 입력한 텍스트는 AI 프로바이더로 전송됩니다.</li>
         </ul>
-        <p>페이지 콘텐츠는 로컬에서 처리되거나 설정된 AI 프로바이더로 전송됩니다. 당사 서버로는 전송되지 않습니다.</p>
+        <p>웹페이지 콘텐츠는 당사가 중앙에 보관하지 않습니다. AI 응답은 사용자의 로컬 대화 기록에만 저장됩니다.</p>
       </div>
 
       <div class="section">
-        <h2><span class="num">6</span> 권한</h2>
+        <h2><span class="num">7</span> Chrome Sync(Google)를 통한 데이터 공유</h2>
+        <p><code>chrome.storage.sync</code>에 저장된 설정은 Chrome에 의해 암호화되어 동일 Google 계정으로 로그인된 다른 브라우저와 동기화됩니다. 이는 <a href="https://policies.google.com/privacy" target="_blank">Google 개인정보처리방침</a>의 적용을 받습니다. 동기화를 원치 않으면 Chrome Sync에서 로그아웃하거나 확장 프로그램 동기화를 비활성화할 수 있습니다.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">8</span> 공유하지 않는 데이터</h2>
         <ul>
-          <li><strong>sidePanel</strong> — 메인 채팅 인터페이스를 표시합니다</li>
-          <li><strong>storage</strong> — 설정 및 대화 기록을 로컬에 저장합니다</li>
-          <li><strong>activeTab</strong> — 사용자 요청 시 번역/요약을 위해 페이지 콘텐츠를 읽습니다</li>
-          <li><strong>scripting</strong> — 작문 도우미 및 페이지 번역 기능을 삽입합니다</li>
-          <li><strong>contextMenus</strong> — AI 기능에 빠르게 접근하기 위한 우클릭 메뉴를 추가합니다</li>
-          <li><strong>host_permissions (모든 URL)</strong> — 모든 사이트에서 페이지 번역을 가능하게 하고 AI 프로바이더에 API를 호출합니다</li>
+          <li>광고주·데이터 브로커에게 데이터를 판매·임대·교환하지 않습니다.</li>
+          <li>분석/추적 서비스와 데이터를 공유하지 않습니다.</li>
+          <li>사용자 데이터를 머신러닝 모델 학습에 사용하지 않습니다.</li>
+          <li>midler 자체 개발자는 사용자 설치본의 데이터를 수신하지 않으며, 개발자 운영 백엔드가 존재하지 않습니다.</li>
         </ul>
       </div>
 
       <div class="section">
-        <h2><span class="num">7</span> 데이터 보존 및 삭제</h2>
-        <p>모든 데이터는 로컬에 저장됩니다. 다음 방법으로 언제든 데이터를 삭제할 수 있습니다:</p>
+        <h2><span class="num">9</span> 요청하는 권한</h2>
         <ul>
-          <li>확장 프로그램의 채팅 인터페이스에서 대화 기록 삭제</li>
-          <li>확장 프로그램의 설정 페이지에서 설정 초기화</li>
-          <li>확장 프로그램 제거 (모든 로컬 데이터 삭제)</li>
+          <li><strong>storage</strong> — 설정 및 대화 기록을 로컬 및 Chrome Sync에 저장.</li>
+          <li><strong>sidePanel</strong> — Chrome 사이드 패널에 채팅 인터페이스 표시.</li>
+          <li><strong>activeTab</strong> — 번역/요약/페이지 대화 시 활성 탭 텍스트 읽기.</li>
+          <li><strong>scripting</strong> — 작문 도우미 오버레이 및 페이지 번역 기능 삽입.</li>
+          <li><strong>contextMenus</strong> — 선택 기반 AI 동작용 우클릭 메뉴 제공.</li>
+          <li><strong>tabs</strong> — URL 기반 정책 평가를 위해 활성 탭 URL 조회.</li>
+          <li><strong>host_permissions</strong>(모든 URL) — 어떤 페이지에서도 작문 도우미 삽입 및 사용자 지정 도메인 포함 AI 프로바이더 API 호출에 필요.</li>
         </ul>
       </div>
 
       <div class="section">
-        <h2><span class="num">8</span> 아동 개인정보</h2>
-        <p>midler는 13세 미만 아동을 대상으로 하지 않으며, 아동의 데이터를 의도적으로 수집하지 않습니다.</p>
+        <h2><span class="num">10</span> 데이터 보안</h2>
+        <ul>
+          <li>AI 프로바이더 및 엔터프라이즈 서버에 대한 모든 네트워크 호출은 HTTPS를 사용합니다.</li>
+          <li>API 키는 <code>chrome.storage.sync</code>에 저장되며, 해당 AI 프로바이더 외 어떤 당사자에게도 전송되지 않습니다.</li>
+          <li>최소 권한 원칙을 따릅니다. 데이터는 호출한 기능의 목적지로만 전송됩니다.</li>
+          <li>확장 프로그램에 입력한 API 키 및 자격 증명의 보안은 사용자 책임입니다.</li>
+        </ul>
       </div>
 
       <div class="section">
-        <h2><span class="num">9</span> 본 방침의 변경</h2>
-        <p>본 개인정보 처리방침은 수시로 업데이트될 수 있습니다. 변경 사항은 상단의 "최종 업데이트" 날짜에 반영됩니다.</p>
+        <h2><span class="num">11</span> 데이터 보존 및 사용자 권리</h2>
+        <p>로컬 데이터는 사용자가 삭제하거나 확장 프로그램을 제거할 때까지 유지됩니다. 사용자는 언제든 다음을 수행할 수 있습니다.</p>
+        <ul>
+          <li>대화 기록 패널에서 개별 대화 또는 고정되지 않은 모든 대화 삭제.</li>
+          <li>이미지·파일·갤러리 항목 삭제.</li>
+          <li>설정 페이지에서 모든 설정 초기화.</li>
+          <li>엔터프라이즈 서버에서 로그아웃(프로필 캐시 제거).</li>
+          <li>"백업/복원" 기능으로 단일 <code>.midler-backup</code> 파일 내보내기/가져오기.</li>
+          <li>확장 프로그램 제거(IndexedDB 이미지 포함 모든 로컬 데이터 삭제).</li>
+        </ul>
+        <p>엔터프라이즈 서버에 저장된 데이터는 조직의 보존 정책을 따릅니다. 해당 데이터에 대한 권리(열람·정정·삭제·내보내기) 행사는 조직 관리자에게 문의해 주세요.</p>
       </div>
 
       <div class="section">
-        <h2><span class="num">10</span> 연락처</h2>
-        <p>본 개인정보 처리방침에 대한 문의사항이 있으시면 아래 채널을 통해 문의해 주세요:</p>
+        <h2><span class="num">12</span> 아동 개인정보</h2>
+        <p>midler는 13세 미만 아동을 대상으로 하지 않으며, 아동의 데이터를 의도적으로 수집하지 않습니다. 아동이 midler를 통해 데이터를 제공한 것으로 의심되는 경우, 로컬 삭제 안내를 위해 당사로 연락해 주세요.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">13</span> 국제 데이터 전송</h2>
+        <p>제3자 AI 프로바이더 사용 시 데이터가 사용자의 거주 국가 외부에서 처리될 수 있으며, 이는 각 프로바이더의 개인정보처리방침을 따릅니다. 3절의 링크된 정책을 검토해 주세요.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">14</span> 본 방침의 변경</h2>
+        <p>확장 프로그램의 발전에 따라 본 방침이 갱신될 수 있습니다. 중대한 변경은 "최종 업데이트" 날짜에 반영되며, 필요한 경우 제품 내에서 안내됩니다. 갱신 이후 계속 사용하는 경우 변경된 방침에 동의한 것으로 간주됩니다.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">15</span> 연락처</h2>
+        <p>본 개인정보 처리방침에 대한 문의·민원·데이터 관련 요청은 아래 채널로 연락해 주세요.</p>
         <ul>
           <li><a href="https://www.anyit.net/#contact" target="_blank">홈페이지 문의하기</a></li>
           <li><a href="https://github.com/2pylab/midler-privacy-policy/issues" target="_blank">GitHub Issues</a></li>
         </ul>
+        <p>엔터프라이즈 사용자는 엔터프라이즈 서버에 저장된 데이터에 관해서는 조직 관리자에게 문의해 주세요.</p>
       </div>
     </div>
   </div>
