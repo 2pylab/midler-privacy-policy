@@ -293,7 +293,7 @@
     <!-- English -->
     <div id="en" class="section-en">
       <h1 class="page-title">Privacy Policy</h1>
-      <p class="last-updated">Last updated: May 8, 2026 · Version 1.7.13+</p>
+      <p class="last-updated">Last updated: May 15, 2026 · Version 1.11.2+</p>
       <div class="divider"></div>
 
       <p class="intro"><strong>midler - AI Assistant</strong> ("midler", "the Extension", "we") is a browser extension that provides AI-powered chat, translation, search, image generation, document analysis, and writing assistance. This Privacy Policy comprehensively explains what data midler collects, processes, stores, and shares, and with which parties.</p>
@@ -398,6 +398,20 @@
       </div>
 
       <div class="section">
+        <h2><span class="num">5b</span> Code Interpreter (Optional, since v1.11)</h2>
+        <p>The Extension includes an optional "Code Analysis" mode that lets the AI execute Python code locally in your browser using Pyodide (a WebAssembly Python runtime bundled with the Extension). Key points:</p>
+        <ul>
+          <li><strong>Where code runs:</strong> Inside an isolated Web Worker in your browser. No code is sent to any midler-controlled server. All processing happens locally.</li>
+          <li><strong>What is sent to the AI provider:</strong> Your question, attached file metadata (file names and a system-prompt summary), and execution results (stdout text, error messages, return values). Chart images are <strong>not</strong> sent back to the AI; only a marker indicating a chart was rendered is included to save tokens.</li>
+          <li><strong>Attached files:</strong> When you attach a file in Code Analysis mode, the file's binary contents are mounted into Pyodide's in-memory virtual filesystem so Python can read them. The file is also written to your browser's IndexedDB for the duration of the conversation, then automatically cleaned up when the conversation is deleted or when the Extension is uninstalled.</li>
+          <li><strong>Generated code:</strong> The AI provider generates Python code via the same chat completion API. You can review every line of generated code in the collapsible "Python execution" block before/after it runs.</li>
+          <li><strong>External HTTP from Python:</strong> Generated Python may use <code>pyodide.http.pyfetch</code> to call external HTTP APIs. These calls originate from your browser, subject to browser CORS rules and the Extension's host_permissions. We do not record these calls.</li>
+          <li><strong>Charts:</strong> matplotlib charts produced by your code are stored locally in IndexedDB (<code>midler_chart_results</code>) so they persist across browser sessions. Deleting the conversation deletes the charts.</li>
+          <li><strong>Bundled analysis packages:</strong> pandas, numpy, matplotlib, openpyxl, and supporting libraries are bundled with the Extension. The Chrome Web Store build does not fetch additional packages from PyPI at runtime; all wheels load from the extension package.</li>
+        </ul>
+      </div>
+
+      <div class="section">
         <h2><span class="num">6</span> Web Page and Selection Access</h2>
         <p>midler accesses the contents of web pages only when you explicitly invoke a feature that needs them:</p>
         <ul>
@@ -491,7 +505,7 @@
     <!-- Korean -->
     <div id="ko" class="section-ko">
       <h1 class="page-title">개인정보 처리방침</h1>
-      <p class="last-updated">최종 업데이트: 2026년 5월 8일 · 버전 1.7.13+</p>
+      <p class="last-updated">최종 업데이트: 2026년 5월 15일 · 버전 1.11.2+</p>
       <div class="divider"></div>
 
       <p class="intro"><strong>midler - AI 어시스턴트</strong>("midler", "본 확장 프로그램", "당사")는 AI 기반 채팅, 번역, 검색, 이미지 생성, 문서 분석, 작문 지원 기능을 제공하는 브라우저 확장 프로그램입니다. 본 방침은 midler가 어떤 데이터를 수집·처리·저장·공유하며, 어떤 당사자에게 전송하는지 누락 없이 설명합니다.</p>
@@ -593,6 +607,20 @@
       <div class="section">
         <h2><span class="num">5</span> 사내 AI(RAG) 검색(선택)</h2>
         <p>관리자가 "사내 AI 검색" 기능을 활성화한 경우, 사용자의 검색 질의와 선택된 서비스 ID는 조직이 운영하는 RAG 엔드포인트로 전송됩니다. 응답(인용/문서 참조 포함)은 브라우저로 반환되어 대화의 일부로 로컬 저장됩니다. 당사로는 어떤 데이터도 전송되지 않습니다.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">5b</span> 코드 인터프리터(선택, v1.11부터)</h2>
+        <p>확장 프로그램에는 선택적 "코드 분석" 모드가 포함되어 있어, AI가 생성한 Python 코드를 Pyodide(확장에 번들된 WebAssembly Python 런타임)로 사용자 브라우저에서 로컬 실행할 수 있습니다.</p>
+        <ul>
+          <li><strong>코드 실행 위치:</strong> 브라우저 내부의 격리된 Web Worker. midler가 운영하는 서버로는 어떤 코드도 전송되지 않습니다. 모든 처리는 로컬에서 수행됩니다.</li>
+          <li><strong>AI 프로바이더에 전송되는 것:</strong> 사용자 질문, 첨부 파일 메타데이터(파일명·시스템 프롬프트 요약), 코드 실행 결과(stdout 텍스트, 오류 메시지, 반환값). 차트 이미지는 토큰 절약을 위해 AI에 다시 전송되지 않으며, 차트가 생성되었다는 마커만 포함됩니다.</li>
+          <li><strong>첨부 파일:</strong> 코드 분석 모드에서 파일을 첨부하면 파일 바이너리가 Pyodide의 메모리 가상 파일시스템에 마운트되어 Python이 읽을 수 있습니다. 파일은 대화 동안 브라우저 IndexedDB에도 저장되며, 대화 삭제 또는 확장 제거 시 자동 정리됩니다.</li>
+          <li><strong>생성된 코드:</strong> AI 프로바이더는 기존 채팅 완료 API를 통해 Python 코드를 생성합니다. 사용자는 접힌 "Python 실행" 블록에서 모든 코드 라인을 확인할 수 있습니다.</li>
+          <li><strong>Python에서의 외부 HTTP:</strong> 생성된 코드는 <code>pyodide.http.pyfetch</code>로 외부 HTTP API를 호출할 수 있습니다. 이러한 호출은 브라우저에서 시작되며 브라우저 CORS 규칙과 확장의 host_permissions 적용을 받습니다. 당사는 이러한 호출을 기록하지 않습니다.</li>
+          <li><strong>차트:</strong> matplotlib 차트는 브라우저 세션 간 유지를 위해 IndexedDB(<code>midler_chart_results</code>)에 로컬 저장됩니다. 대화 삭제 시 함께 삭제됩니다.</li>
+          <li><strong>번들 분석 패키지:</strong> pandas, numpy, matplotlib, openpyxl 등은 확장과 함께 번들됩니다. Chrome Web Store 빌드는 런타임에 PyPI에서 추가 패키지를 다운로드하지 않으며, 모든 휠은 확장 패키지에서 로드됩니다.</li>
+        </ul>
       </div>
 
       <div class="section">
